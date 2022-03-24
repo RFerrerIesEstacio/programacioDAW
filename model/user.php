@@ -3,18 +3,22 @@
     require_once('model/dbmodel.php');
 
     class User extends DbModel{
+
     private int $id;
     private string $name;
+    private string $username;
+    private string $adress;
     private string $email;
     private string $avatarImage;
 
-    public function __construct(string $name = '', string $email = '', string $avatarImage = ''){
+    public function __construct(string $name = '', string $email = '', string $avatarImage = '', string $username = '', string $adress = ''){
 
         parent::__construct();
         $this->name = $name;
         $this->email = $email;
         $this->avatarImage = $avatarImage;
-
+        $this->username = $username;
+        $this->adress = $adress;
     }
 
     public function getByName(string $name){
@@ -32,7 +36,8 @@
                 $user-> setName($selectedUser['name']);
                 $user-> setEmail($selectedUser['email']);
                 $user-> setImage($selectedUser['avatarImage']);
-
+                $user-> setUsername($selectedUser['username']);
+                $user-> setAdress($selectedUser['adress']);
             }
 
             return $user;
@@ -58,6 +63,14 @@
         return $this->avatarImage;
     }
 
+    public function getUsername(){
+        return $this->username;
+    }
+
+    public function getAdress(){
+        return $this->adress;
+    }
+
     public function setId(int $id){
         $this->id = $id;
     }
@@ -72,6 +85,14 @@
 
     public function setImage(string $image){
         $this->avatarImage = $image;
+    }
+
+    public function setUsername(string $username){
+        $this->username = $username;
+    }
+
+    public function setAdress(string $adress){
+        $this->adress = $adress;
     }
 
     
