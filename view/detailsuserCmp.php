@@ -1,7 +1,8 @@
 <?php
 
     include_once("model/user.php");
-    $user = new User(1,"Usuario1","email@email.com","view/images/logo.png");
+    $user = new User();
+    $user = $user->getByName("Rafa");
 
 
 ?>

@@ -1,16 +1,45 @@
-<?php class User{
+<?php 
+
+    require_once('model/dbmodel.php');
+
+    class User extends DbModel{
     private int $id;
     private string $name;
     private string $email;
     private string $avatarImage;
 
-    public function __construct(int $id, string $name, string $email, string $avatarImage){
+    public function __construct(string $name = '', string $email = '', string $avatarImage = ''){
 
-        $this->id = $id;
+        parent::__construct();
         $this->name = $name;
         $this->email = $email;
         $this->avatarImage = $avatarImage;
 
+    }
+
+    public function getByName(string $name){
+
+        try{
+            $query = $this->connectToDb()->prepare('SELECT * FROM user WHERE name = :name');
+            $query -> execute(['name' => $name]);
+            $selectedUser = $query -> fetch(PDO::FETCH_ASSOC);
+            $user = new User();
+
+            
+            if($query->rowCount() > 0){
+
+                $user-> setId($selectedUser['id']);
+                $user-> setName($selectedUser['name']);
+                $user-> setEmail($selectedUser['email']);
+                $user-> setImage($selectedUser['avatarImage']);
+
+            }
+
+            return $user;
+            
+        }catch(PDOException $e){
+            echo $e;
+        }
     }
 
     public function getId(){
