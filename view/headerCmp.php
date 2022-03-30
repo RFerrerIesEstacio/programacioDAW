@@ -1,5 +1,11 @@
-<?php require_once('config/config.php'); ?>
-<?php require_once('controller/database.php'); ?>
+<?php
+require_once('config/config.php'); 
+include_once("config/log.php");
+require_once('model/user.php'); 
+require_once('controller/database.php'); 
+require_once('controller/session.php'); 
+startSession();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -61,16 +67,32 @@
             </div>
 
             <div class="navbar-end">
-                <div class="navbar-item">
-                    <div class="buttons">
-                        <a class="button is-primary">
-                            <strong>Sign up</strong>
-                        </a>
-                        <a class="button is-light">
-                            Log in
-                        </a>
+                <?php $userSession = getUserSession();
+                if($userSession == null): ?>
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <a class="button is-primary" onclick="window.location.href = './userRegistrationPage.php'">
+                                <strong>Sign up</strong>
+                            </a>
+                            <a class="button is-light" onclick="window.location.href = './loginpage.php'">
+                                Log in
+                            </a>
+                        </div>
                     </div>
-                </div>
+                <?php else: ?>
+                    <div class="navbar-item">
+                        <form action="" method="POST">
+                            <button class="button is-danger" type="submit" name="logout">Log out</button>
+                        </form>
+                        
+                        <?php if(isset($_POST['logout'])){ 
+                            closeSession();
+                            $_POST = array();
+                            header('Location: ' . constant('URL_BASE') . 'loginpage.php');
+                        }?>
+
+                    </div>
+                <?php endif;?>
             </div>
         </div>
     </nav>

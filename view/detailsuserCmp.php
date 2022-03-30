@@ -1,9 +1,11 @@
 <?php
-
-    include_once("model/user.php");
+    
+$user = getUserSession();
+$userSession = True;
+if ($user == null){
+    $userSession = False;
     $user = new User();
-    $user = $user->getByName("Rafa");
-
+}
 
 ?>
 <article class="panel is-primary">
@@ -16,8 +18,13 @@
             <h3><b>Nombre de usuario: </b> <?= $user->getUsername() ?></h3>
             <h3><b>Email: </b> <?= $user->getEmail() ?></h3>
             <h3><b>Dirección: </b> <?= $user->getAdress() ?></h3>
-            
-            <div style="align-items: center;"><img src=<?= $user ->getImage() ?> width="200" height="200"></div>
+            <br>  
+            <div style="display: flex; justify-content: center;"><img src=<?= $user->getImage() != "" ? $user ->getImage() : "view/images/User_images/user.png"?> width="200" height="200"></div>
         </div>
+    <?php if($userSession): ?>
+        <div style="text-align: right;">
+            <button class="button is-rounded" title="Editar" ondblclick="window.location.href = './userEditPage.php'"><img src="view/images/edit.jpg" style="height: 35px;"></button>
+        </div>
+    <?php endif; ?>
     </div>
 </article>

@@ -1,5 +1,9 @@
-
-<?php include_once("view/headerCmp.php");?>
+<?php include_once("view/headerCmp.php");
+$user = getUserSession();
+if ($user == null){
+    header('Location: ' . constant('URL_BASE') . 'loginpage.php');
+}
+?>
 <section class="section">
     <div class="container">
         <div class="columns">
