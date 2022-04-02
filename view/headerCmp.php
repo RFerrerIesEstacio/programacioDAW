@@ -81,6 +81,8 @@ startSession();
                     </div>
                 <?php else: ?>
                     <div class="navbar-item">
+
+                        <p style="padding: 20px; color: #d34141;"><?= $userSession -> getUsername();?></p>
                         <form action="" method="POST">
                             <button class="button is-danger" type="submit" name="logout">Log out</button>
                         </form>
