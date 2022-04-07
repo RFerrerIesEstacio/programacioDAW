@@ -7,6 +7,7 @@
 
     public function __construct(int $idProduct, string $name, int $quantity, int $price, string $type){
 
+
         $this->idProduct = $idProduct;
         $this->name = $name;
         $this->quantity = $quantity;

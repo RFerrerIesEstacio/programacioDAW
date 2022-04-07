@@ -1,0 +1,59 @@
+.shadow{
+  background-color: rgba(0,0,0,0.4);
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  position: fixed;
+  z-index: 49;
+  transition-property: background-color, z-index;
+  transition-timing-function: ease-in-out, step-end;
+  transition-duration: 0.5s, 0s;
+}
+.shadow.hidden{
+  background-color: rgba(0,0,0,0);
+  transition-duration: 0.5s, 0.5s;
+
+}
+
+.hidden{
+  z-index: -10;
+}
+  
+  /* Modal Content */
+  .modal-contentt {
+    z-index: 51;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #fefefe;
+    margin: auto;
+    border: 1px solid #888;
+    width: 50%;
+    border-radius: 6px;
+    width: 400px;
+    box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
+    transition: transform 0.5s ease-in-out;    
+  }
+  
+  .shadow.hidden .modal-contentt{
+    transform: translate(-50%,-300%);
+    
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    padding-right: 10px;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }

@@ -5,7 +5,6 @@ class DbModel{
     protected Database $db;
 
     function __construct(){
-
         $this->db = new Database();
     }
     

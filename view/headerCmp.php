@@ -1,9 +1,12 @@
 <?php
-require_once('config/config.php'); 
+require_once('config/config.php');
+require_once('model/shoppingList.php');
 include_once("config/log.php");
 require_once('model/user.php'); 
 require_once('controller/database.php'); 
-require_once('controller/session.php'); 
+require_once('controller/session.php');
+
+
 startSession();
 ?>
 
@@ -15,6 +18,8 @@ startSession();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ListaCompra</title>
     <link rel="stylesheet" href="./styles/bulma.min.css">
+    <link rel="stylesheet" href="./styles/modal.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -22,7 +27,7 @@ startSession();
 
     <nav class="navbar" role="navigation" aria-label="main navigation" style="height: 90px; background-color: #dfffed;">
         <div class="navbar-brand">
-            <a class="navbar-item" href="">
+            <a class="navbar-item" href="index.php">
                 <img src="./view/images/logo1.png" style="max-height: 90px;">
             </a>
 
@@ -88,6 +93,7 @@ startSession();
                         </form>
                         
                         <?php if(isset($_POST['logout'])){ 
+                            consoleLog("epa");
                             closeSession();
                             $_POST = array();
                             header('Location: ' . constant('URL_BASE') . 'loginpage.php');

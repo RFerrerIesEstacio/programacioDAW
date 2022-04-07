@@ -12,7 +12,7 @@
     private string $email;
     private string $avatarImage;
 
-    public function __construct(string $name = "", string $email  = "", string $avatarImage = "", string $username = "", string $adress = "", string $password = ""){
+    public function __construct(string $name = "", string $email  = "", string $avatarImage = "", string $username = "", string $adress = "", string $password = "", int $id = -1){
 
         parent::__construct();
         $this->name = $name;
@@ -21,6 +21,7 @@
         $this->username = $username;
         $this->adress = $adress;
         $this->password = $password;
+        $this->id = $id;
     }
 
     public function create(){
