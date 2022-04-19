@@ -29,7 +29,15 @@ if (!empty($_POST)){
     }
     else if($action == "Delete"){
         $shoppingListId = intval($_POST['shoppingListId']); 
-        $isShoppingListOk = $lista -> delete($shoppingListId);
+        $isShoppingListOk = 
+        $shoppingListElement = new shopListElement();
+        $isShoppingListOk = $shoppingListElement->deleteListItems($shoppingListId);
+        $isShoppingListOk = $isShoppingListOk && $lista -> delete($shoppingListId);
+    }
+    else if($action == "deleteProduct"){
+        $shoppingListElement = new shopListElement();
+        $shoppingListItemName = $_POST['shoppingListName'];
+        $isShoppingListOk = $shoppingListElement -> delete($shoppingListItemName);
     }
     
     if($isShoppingListOk)

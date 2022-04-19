@@ -1,5 +1,8 @@
 <?php
 
+if (isset($_GET['item'])){
+
+}
 $botton = "Crear";
 $accion = "Create";
 if($shoppingList -> getUserId() != -1){
@@ -60,6 +63,29 @@ if($shoppingList -> getUserId() != -1){
                 </div>
             </form>
         </div>
+    </div>
+</div>
+<div id="deleteProduct" class="shadow hidden">
+    <div class="modal-contentt">
+
+        <span class="close">&times;</span>
+        <p class="panel-heading" style="text-align: center; padding-right: 7px;">
+           Borrar Producto
+        </p>
+        <div class="box" style="margin: 0;">
+            <p id ="productChange" style="text-align: center;">
+                ¿Desea eliminar el producto <b><?=$_GET['item']?></b> de su lista de la compra?
+            </p>
+        </div>
+        <form action="" method="POST">
+            <div class="buttons is-centered" style="padding: 10px;">
+                    <input id="productName" name="shoppingListName" type="hidden">
+                    <input id="action" name="action" type="hidden" value="deleteProduct">
+                    <button class="button is-primary" type="submit">Aceptar</button>
+                
+                <a class="button is-link is-light shut" >Cancelar</a>
+            </div>
+        </form>
     </div>
 </div>
 <script src="styles/modal.js"></script>

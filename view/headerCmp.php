@@ -5,6 +5,7 @@ include_once("config/log.php");
 require_once('model/user.php'); 
 require_once('controller/database.php'); 
 require_once('controller/session.php');
+require_once('model/shoplist.php');
 
 
 startSession();
