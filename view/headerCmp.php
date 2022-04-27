@@ -1,6 +1,7 @@
 <?php
 require_once('config/config.php');
 require_once('model/shoppingList.php');
+require_once('model/product.php');
 include_once("config/log.php");
 require_once('model/user.php'); 
 require_once('controller/database.php'); 

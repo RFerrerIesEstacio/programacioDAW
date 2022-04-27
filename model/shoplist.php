@@ -50,6 +50,23 @@ class shopListElement extends DbModel{
         }
     }
 
+    public function addListItem(int $shoppingListId, int $selectedProductId, string $productQuantity){
+        try{
+            $query = $this->connectToDb()->prepare('INSERT INTO shoppingListELement (productId, shoppingListId, quantity) 
+            VALUES(:productId, :shoppingListId, :quantity)');
+            $query -> execute([
+                'productId' => $selectedProductId,
+                'shoppingListId' => $shoppingListId,
+                'quantity' => $productQuantity
+            ]);
+            return true;
+        }
+        catch(PDOException $e){
+            echo $e;
+            return false;
+        }
+    }
+
     public function getShoppingItemsList($shoppingListId){
         try{
             $query = 

@@ -63,6 +63,10 @@
                     print("<tfoot><th colspan=\"4\">TOTAL</th><th style=\"text-align: center;\">$total</th></tfoot>");
                     ?>
                 </tbody>
+            </table>
+            <div style="text-align: right;">
+                <button class="button is-rounded" tittle="Añadir Producto" onclick="loadModal('#addProduct', <?=$shoppingList->getId()?>)">➕ Añadir Producto</button>
+            </div>
         </div>
     <?php else: ?>
         <div class="notification is-primary" style="text-align: center;">
