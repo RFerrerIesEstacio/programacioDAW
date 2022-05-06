@@ -6,9 +6,7 @@ $action ="";
 if(!empty($_POST['action'])){
     $action = $_POST['action'];
 }
-consoleLog($action);
 if (!empty($_POST)){
-    consoleLog($action);
     $isShoppingListOk = false;
     $lista = new ShoppingList();
 
@@ -31,7 +29,6 @@ if (!empty($_POST)){
             break;
 
         case "Delete":
-            consoleLog("entra");
             $shoppingListId = intval($_POST['shoppingListId']); 
             $shoppingListElement = new shopListElement();
             $isShoppingListOk = $shoppingListElement->deleteListItems($shoppingListId);
@@ -50,7 +47,6 @@ if (!empty($_POST)){
         case "addProduct":
             
             if(!empty($_POST["selectedProduct"]) && !empty($_POST["productQuantity"])){
-                consoleLog("entra");
                 $selectedProductID = intval($_POST['selectedProduct']);
                 $productQuantity = floatval($_POST['productQuantity']);
                 $shoppingListId = intval($_POST['shoppingListId']);
@@ -60,7 +56,7 @@ if (!empty($_POST)){
         break;
 
         default:
-            header('Location: ' . constant('URL_BASE'));
+            /* header('Location: ' . constant('URL_BASE')); */
         break;
 
     }

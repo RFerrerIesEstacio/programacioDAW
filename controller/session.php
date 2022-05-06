@@ -47,3 +47,43 @@ function setSessionVariable(string $variableName, $value){
 function unsetSessionVariable(string $variableName){
     unset($_SESSION[$variableName]);
 }
+
+function setLanguageSession(string $language = ''){
+    if ($language == null) $language = constant('DEFAULT_LANGUAGE');
+    $_SESSION['language'] = $language;
+    $fileTraslationPath = "language/" . $language . ".json";
+    $stringFileContents = file_get_contents($fileTraslationPath);
+    if(!$stringFileContents){
+        echo "Error al leer el fichero  de traducciones para el idioma " . $language;
+    }
+    $decodedJson = json_decode($stringFileContents, true);
+    if($decodedJson === null){
+        echo "Error al decodificar el fichero de traducciones para el idioma " . $language;
+    }
+    $traslationsArray = [];
+    foreach ($decodedJson as $traslationKey => $traslationValue){
+        $traslationsArray[$traslationKey] = $traslationValue;
+    }
+
+
+    $_SESSION['traslationArray'] = $traslationsArray;
+}
+
+function getLanguageSesion(){
+    $languageSesion = $_SESSION['language'];
+    if($languageSesion === null) $languageSesion = setLanguageSession(constant('DEFAULT_LANGUAGE'));
+    return $languageSesion;
+}
+
+function getTraslationValue(string $traslationKey){
+    $traslationString = "NO_EXISTE_TRADUCCIÓN";
+    if (isset($_SESSION) && array_key_exists('traslationArray', $_SESSION) && array_key_exists($traslationKey, $_SESSION['traslationArray'])) {
+        $traslationString = $_SESSION['traslationArray'][$traslationKey];
+    }
+    else{
+        startSession();
+        setLanguageSession();
+    }
+    if ($traslationString === null) $traslationString = "NO_EXISTE_TRADUCCIÓN";
+    return $traslationString;
+}

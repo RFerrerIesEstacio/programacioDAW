@@ -8,8 +8,10 @@ require_once('controller/database.php');
 require_once('controller/session.php');
 require_once('model/shoplist.php');
 
-
 startSession();
+
+require_once("controller/settings.php"); 
+
 ?>
 
 <!DOCTYPE html>
@@ -90,17 +92,14 @@ startSession();
                     <div class="navbar-item">
 
                         <p style="padding: 20px; color: #d34141;"><?= $userSession -> getUsername();?></p>
-                        <form action="" method="POST">
-                            <button class="button is-danger" type="submit" name="logout">Log out</button>
-                        </form>
-                        
-                        <?php if(isset($_POST['logout'])){ 
-                            consoleLog("epa");
-                            closeSession();
-                            $_POST = array();
-                            header('Location: ' . constant('URL_BASE') . 'loginpage.php');
-                        }?>
+                        <button class="button" tittle="Ajustes" onclick="loadModal('#settingsModal')">⚙️</button>
 
+                        <?php if(isset($_POST['logout'])){ 
+                                closeSession();
+                                $_POST = array();
+                                header('Location: ' . constant('URL_BASE') . 'loginpage.php');
+                                }
+                        ?>
                     </div>
                 <?php endif;?>
             </div>

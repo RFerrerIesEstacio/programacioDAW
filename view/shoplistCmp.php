@@ -2,7 +2,8 @@
     
     include_once("model/shoplist.php");
     include_once("controller/shoppingListAdministration.php");
-
+    
+    
     $shoppingList = new ShoppingList();
 
     
@@ -18,7 +19,7 @@
     <?php if($shoppingList -> getId() != -1): ?>
         <div class="panel-heading" style="text-align: center;">
             <p>
-                Lista de la compra -> <i><?= $shoppingList -> getName(); ?></i><br>
+                <?= getTraslationValue("LISTA_COMPRA") ?> <i><?= $shoppingList -> getName(); ?></i><br>
                 <?= $shoppingList -> getDescription(); ?>
             </p>
             <img src="<?=$shoppingList->getImage()?>" style="width: 80px;"> 
@@ -31,12 +32,12 @@
             <table class="table is-fullwidth is-bordered is-striped is-narrow is-hoverable">
                 <thead>
                     <tr>
-                        <th>Producto</th>
-                        <th style="text-align: center;">Cantidad</th>
-                        <th style="text-align: center;">Precio Unidad</th>
-                        <th style="text-align: center;">Tipo</th>
-                        <th style="text-align: center;">Total</th>
-                        <th style="text-align: center;">Acciones</th>
+                        <th><?= getTraslationValue("PRODUCT") ?></th>
+                        <th style="text-align: center;"><?= getTraslationValue("CANTIDAD") ?></th>
+                        <th style="text-align: center;"><?= getTraslationValue("PRECIO_UNIDAD") ?></th>
+                        <th style="text-align: center;"><?= getTraslationValue("TIPO") ?></th>
+                        <th style="text-align: center;"><?= getTraslationValue("TOTAL") ?></th>
+                        <th style="text-align: center;"><?= getTraslationValue("ACCIONES") ?></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -65,17 +66,18 @@
                 </tbody>
             </table>
             <div style="text-align: right;">
-                <button class="button is-rounded" tittle="Añadir Producto" onclick="loadModal('#addProduct', <?=$shoppingList->getId()?>)">➕ Añadir Producto</button>
+                <button class="button is-rounded" tittle="Añadir Producto" onclick="loadModal('#addProduct', <?=$shoppingList->getId()?>)">➕ <?= getTraslationValue("ADD_PRODUCT") ?></button>
             </div>
         </div>
     <?php else: ?>
         <div class="notification is-primary" style="text-align: center;">
-            <p style="margin-bottom: 10px;">El usuario no dispone de una lista de la compra</p>
-            <button class="button is-rounded" tittle="Crear" onclick="loadModal('#updateModal')">Añadir</button>
+            <p style="margin-bottom: 10px;"> <?= getTraslationValue("NO_LIST") ?></p>
+            <button class="button is-rounded" tittle="Crear" onclick="loadModal('#updateModal')"> <?= getTraslationValue("ADD") ?></button>
         </div>
     <?php endif; ?>
 </article>
 <?php 
+
 require_once("./modals.php");
  ?>
 

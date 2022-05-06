@@ -21,5 +21,3 @@ $(".shut").on("click", function() {
 });
 
 
-
-

@@ -30,11 +30,9 @@ class ShoppingList extends DbModel{
             return true;
             } catch (PDOException $e){
                 return false;
-                consoleLog($e);
         }
     }
     public function update(int $shopListId, string $newName, string $newDescription, string $image){
-        consoleLog($image);
         try {
                 $query = $this->connectToDb()->prepare('UPDATE shoppinglist SET name = :name, description = :description, image = :image WHERE id = :shoppingListId');
                 $query -> execute([
