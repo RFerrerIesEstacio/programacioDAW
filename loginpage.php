@@ -7,7 +7,7 @@
         Inicio de Sesion
     </p>
     <div class="box">
-        <form action="" method="POST">
+        <form action="#" method="POST">
             <div class="field">
                 <div class="control">
                     <input class="input" type="text" name="username" placeholder="Nombre de usuario">
@@ -33,6 +33,6 @@
 
 </div>
 
-<?php include_once("controller\userLogin.php"); ?>
+<?php require_once("controller\userLogin.php"); ?>
     
 <?php include_once("view/footerCmp.php");?>

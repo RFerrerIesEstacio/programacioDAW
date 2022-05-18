@@ -64,7 +64,7 @@ if (!empty($_POST)){
     if($isShoppingListOk)
     header('Location: ' . constant('URL_BASE'));
 
-    $_POST = array();
+
 
    /*  if($action == "Create" || $action == "Update"){
         if (!empty($_POST['name']) && !empty($_POST['description'])){

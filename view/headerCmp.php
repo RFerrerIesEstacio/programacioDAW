@@ -44,12 +44,12 @@ require_once("controller/settings.php");
 
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item">
-                    Home
+                <a class="navbar-item" href="index.php">
+                    <?= getTraslationValue("INICIO") ?>
                 </a>
 
-                <a class="navbar-item">
-                    Documentation
+                <a class="navbar-item" href="productList.php">
+                    <?= getTraslationValue("LISTA DE PRODUCTOS") ?>
                 </a>
 
                 <div class="navbar-item has-dropdown is-hoverable">
@@ -96,7 +96,6 @@ require_once("controller/settings.php");
 
                         <?php if(isset($_POST['logout'])){ 
                                 closeSession();
-                                $_POST = array();
                                 header('Location: ' . constant('URL_BASE') . 'loginpage.php');
                                 }
                         ?>

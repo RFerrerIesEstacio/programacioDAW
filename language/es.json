@@ -36,5 +36,8 @@
     "IT": "Italiano",
     "APPLY": "Aplicar Cambios",
     "SETTINGS" : "Ajustes",
-    "USUARIO" : "Usuario"
+    "USUARIO" : "Usuario",
+    "INICIO" : "Inicio",
+    "LISTA DE PRODUCTOS" : "Lista de productos",
+    "IMAGEN": "Imagen"
 }

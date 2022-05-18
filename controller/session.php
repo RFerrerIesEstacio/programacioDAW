@@ -65,8 +65,8 @@ function setLanguageSession(string $language = ''){
         $traslationsArray[$traslationKey] = $traslationValue;
     }
 
-
     $_SESSION['traslationArray'] = $traslationsArray;
+
 }
 
 function getLanguageSesion(){

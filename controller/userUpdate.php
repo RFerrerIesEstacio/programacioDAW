@@ -28,6 +28,6 @@ if (!empty($_POST)) {
             setUserSession($selectedUser);
             header('Location: ' . constant('URL_BASE'));
         }
-        $_POST = array();
+        
     }
 }

@@ -3,7 +3,7 @@
 if (!empty($_POST)){
     
     if (!empty($_POST['username']) && !empty($_POST['password'])){
-          
+
         $usernameUsuario = $_POST['username'];
         $passwordUsuario = $_POST['password'];
 
@@ -17,7 +17,7 @@ if (!empty($_POST)){
                 header('Location: '. constant('URL_BASE'));
             }
         }
-        $_POST = array();
+        
     }
 }
 ?>
