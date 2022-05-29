@@ -3,15 +3,18 @@
 if (isset($_GET['item'])){
 
 }
-$botton = getTraslationValue("ACCEPT") ;
-$accion = "Create";
-if($shoppingList -> getUserId() != -1){
-    $botton = getTraslationValue("MODIFY");
-    $accion = "Update";
+if (isset($shoppingList)){
+    $botton = getTraslationValue("ACCEPT") ;
+    $accion = "Create";
+    if($shoppingList -> getUserId() != -1){
+        $botton = getTraslationValue("MODIFY");
+        $accion = "Update";
+    }
 }
+
 ?>
 
-
+<?php if(isset($shoppingList)): ?>
 <!--  MODAL PARA ELIMINAR LISTAS  -->
 <div id="deleteModal" class="shadow hidden">
     <div class="modal-contentt">
@@ -167,13 +170,12 @@ if($shoppingList -> getUserId() != -1){
 
 
 
-
+<?php endif ?>
 
 <!--  MODAL PARA LOS SETTINGS -->
 
 <div id="settingsModal" class="shadow hidden">
     <div class="modal-contentt">
-        <?php consoleLog(getLanguageSesion());?>
         <span class="close">&times;</span>
         <p class="panel-heading" style="text-align: center; padding-right: 7px; background-color:#00d1b2; color:white;">
             <?= getTraslationValue("SETTINGS") ?>

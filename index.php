@@ -17,4 +17,7 @@ if ($user == null){
     </div>
 </section>
     
-<?php include_once("view/footerCmp.php");?>
+<?php 
+    include_once("view/footerCmp.php");
+    require_once("./modals.php");
+?>

@@ -8,6 +8,7 @@ require_once('controller/database.php');
 require_once('controller/session.php');
 require_once('model/shoplist.php');
 
+
 startSession();
 
 require_once("controller/settings.php"); 
@@ -89,6 +90,10 @@ require_once("controller/settings.php");
                         </div>
                     </div>
                 <?php else: ?>
+                    <div class="navbar-item">
+                        <a href="rssPage.php?opcion=recetas" style="color: black; padding:20px;">Recetas RSS</a>
+                        <a href="rssPage.php?opcion=noticias" style="color: black; padding:20px;">Noticias RSS</a>
+                    </div>
                     <div class="navbar-item">
 
                         <p style="padding: 20px; color: #d34141;"><?= $userSession -> getUsername();?></p>
