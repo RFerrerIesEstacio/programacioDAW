@@ -22,6 +22,21 @@ class shopListElement extends DbModel{
         $this->type = $type;
 
     }
+    public function update(string $shoppingListElementName,int $itemCant){
+        try{
+            $query = $this->connectToDb()->prepare('UPDATE shoppingListElement SET quantity =:itemCant WHERE productId = (SELECT id FROM product WHERE name=:shoppingListElementName);');
+            $query -> execute([
+                 'shoppingListElementName' => $shoppingListElementName,
+                 'itemCant' => $itemCant   
+            ]);
+            return true;
+        }
+        catch(Exception $e){
+            echo $e;
+            return false;
+        }
+    }
+
     public function delete(string $shoppingListElementName){
         try{
             $query = $this->connectToDb()->prepare('DELETE FROM shoppingListElement WHERE productId = (SELECT id FROM product WHERE name=:shoppingListElementName);');

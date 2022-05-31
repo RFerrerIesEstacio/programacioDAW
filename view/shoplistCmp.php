@@ -56,6 +56,7 @@
                                     <td style=\"text-align: center;\">{$shoppingItem->getType()}</td>
                                     <td style=\"text-align: center;\">$productTotal</td>
                                     <td id={$shoppingItem->getIdProduct()} style=\"text-align: center;\">
+                                        <button class=\"button\" onclick=\"loadModal('#editProduct', '{$shoppingItem->getName()}', '{$shoppingItem->getQuantity()}')\"><img src=\"view/images/edit.jpg\" style=\"width: 30px;\"></button>
                                         <button class=\"button\" onclick=\"loadModal('#deleteProduct', '{$shoppingItem->getName()}')\"><img src=\"view/images/delete.png\" style=\"width: 30px;\"></button>
                                     </td>
                                 </tr>

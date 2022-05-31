@@ -37,9 +37,9 @@ if (!empty($_POST)){
             break;
 
         case "deleteProduct":
-
+            consoleLog($_POST);
             $shoppingListElement = new shopListElement();
-            $shoppingListItemName = $_POST['shoppingListName'];
+            $shoppingListItemName = $_POST['productName'];
             $isShoppingListOk = $shoppingListElement -> delete($shoppingListItemName);
 
             break;
@@ -54,7 +54,13 @@ if (!empty($_POST)){
                 $isShoppingListOk = $shoppingListElement->addListItem($shoppingListId, $selectedProductID, $productQuantity);
             }
         break;
-
+        
+        case "editProduct":
+            $shoppingListElement = new shopListElement();
+            $shoppingListItemName = $_POST['productNameChange'];
+            $itemCant = $_POST['productQuantity'];
+            $isShoppingListOk = $shoppingListElement -> update($shoppingListItemName, $itemCant);
+        break;
         default:
             /* header('Location: ' . constant('URL_BASE')); */
         break;

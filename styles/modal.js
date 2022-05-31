@@ -1,5 +1,5 @@
 
-function loadModal(type, name){
+function loadModal(type, name, cantidad){
   $(type).removeClass("hidden");
 
   if(name && type == "#deleteProduct"){
@@ -9,6 +9,12 @@ function loadModal(type, name){
 
   if(name && type == "#addProduct"){
     $('input#shoppingListId').attr('value', name);
+  }
+
+  if(cantidad && name && type == "#editProduct"){
+    $('#editChange').text('¿Desea cambiar la cantidad del producto ' + name + ' de su lista de la compra?');
+    $('input#productNameChange').attr('value', name);
+    $('input#productCant').attr('value', cantidad);
   }
 
 }

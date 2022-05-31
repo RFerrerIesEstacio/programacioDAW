@@ -97,7 +97,7 @@ if (isset($shoppingList)){
         
             <form action="" method="POST">
                 <div class="buttons is-centered" style="padding: 10px;">
-                        <input id="productName" name="shoppingListName" type="hidden">
+                        <input id="productName" name="productName" type="hidden">
                         <input id="action" name="action" type="hidden" value="deleteProduct">
                         <button class="button is-primary" type="submit"><?= getTraslationValue("ACCEPT") ?></button>
                     
@@ -244,6 +244,38 @@ if (isset($shoppingList)){
     </div>
 </div>
 
+<!-- MODAL PARA CAMBIAR CANTIDAD DE PRODUCTOS !-->
+
+<div id="editProduct" class="shadow hidden">
+    <div class="modal-contentt">
+
+        <span class="close">&times;</span>
+        <p class="panel-heading" style="text-align: center; padding-right: 7px; background-color:#00d1b2; color:white;">
+            Editar Producto
+        </p>
+        <div class="box" style="margin: 0;">
+            <p style="margin:5px; text-align:center" id ="editChange" style="text-align: center;">
+                
+            </p>
+            <br>
+            <form action="" method="POST">
+            <div style=" text-align: center; margin: 10px">
+                <label for="productQuantity"><?= getTraslationValue("CANTIDAD") ?>:</label>
+                <input id="productCant" name="productQuantity" type="number" value="">
+            </div>
+            <br>
+            <div class="buttons is-centered" style="padding: 10px;">
+                    <input id="productNameChange" name="productNameChange" type="hidden">
+                    <input id="action" name="action" type="hidden" value="editProduct">
+                    <button class="button is-primary" type="submit"><?= getTraslationValue("ACCEPT") ?></button>
+                
+                <a class="button is-link is-light shut"><?= getTraslationValue("CANCEL") ?></a>
+            </div>
+        </form>
+        </div>
+        
+    </div>
+</div>
 
 <script src="styles/modal.js"></script>
 <script src="javascript/settings.js"></script>
